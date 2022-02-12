@@ -32,6 +32,16 @@ const useStyles = createUseStyles((theme) => ({
   guessSection: {
     margin: "40px 0px",
   },
+  checkSection: {
+    margin: "40px 0px",
+  },
+  checkItems: {
+    "-webkit-flex-direction": "unset !important",
+  },
+  checkItem: {
+    display: "inline",
+    width: 70,
+  },
 }));
 
 export default useStyles;
