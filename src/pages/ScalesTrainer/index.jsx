@@ -8,23 +8,16 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-import { pitches, pitchList } from "../../constants/definitions";
+import { pitches, pitchLabels, pitchList } from "../../constants/definitions";
+import { getRandom } from "../../util/functions";
 import useStyles from "./styles";
-
-/**
- * Randomizes a note from pitch list.
- * @returns A random note from pitch list
- */
-function randomNote(list) {
-  return list[Math.floor(Math.random() * list.length)];
-}
 
 /**
  * This pages does the major scale training.
  */
 function ScalesTrainer() {
   const classes = useStyles();
-  const [note, setNote] = useState(randomNote(pitchList));
+  const [note, setNote] = useState(getRandom(pitchList));
   const [result, setResult] = useState();
   const [checkedPitches, setCheckedPitches] = useState(pitchList);
 
@@ -33,10 +26,10 @@ function ScalesTrainer() {
    */
   function handleNextButton() {
     if (result) {
-      let newNote = randomNote(checkedPitches);
+      let newNote = getRandom(checkedPitches);
 
       while (newNote === note) {
-        newNote = randomNote(checkedPitches);
+        newNote = getRandom(checkedPitches);
       }
 
       setNote(newNote);
@@ -64,7 +57,6 @@ function ScalesTrainer() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.header} />
       <div className={classes.contentWrapper}>
         <div className={classes.content}>
           <Breadcrumbs>
@@ -77,6 +69,7 @@ function ScalesTrainer() {
             <FormGroup className={classes.checkItems}>
               {pitchList.map((pitch) => (
                 <FormControlLabel
+                  key={pitch}
                   control={
                     <Checkbox
                       defaultChecked
@@ -85,7 +78,7 @@ function ScalesTrainer() {
                       }
                     />
                   }
-                  label={pitches[pitch].label}
+                  label={pitchLabels[pitch]}
                   className={classes.checkItem}
                   disableTypography
                 />
@@ -97,7 +90,7 @@ function ScalesTrainer() {
               Guess the natural scale of:
             </Typography>
             <Typography variant="h3" display="inline" color="primary">
-              {pitches[note].label}
+              {pitchLabels[note]}
             </Typography>
             <Typography
               style={{ marginLeft: 10 }}

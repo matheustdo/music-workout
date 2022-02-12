@@ -1,10 +1,15 @@
 export const lightScheme = {
-  primary: "#00ad9f",
-  secondary: "#f2c600",
+  primary: "#0062FF",
+  secondary: "#DA0037",
+  orange: "#FF974A",
+  yellow: "#FFC542",
+  blue: "#6AC0FF",
+  ocean: "#0062FF",
+  red: "#FC5A5A",
   background: {
-    main: "#f7fcfc",
-    secondary: "#ffffff",
-    tertiary: "#ffffff",
+    main: "#F5F6FA",
+    secondary: "#FFFFFF",
+    tertiary: "#E9EAF0",
   },
   text: {
     primary: "#0e1e25",
@@ -13,15 +18,20 @@ export const lightScheme = {
 };
 
 export const darkScheme = {
-  primary: "#00ad9f",
-  secondary: "#f2c600",
+  primary: "#6AC0FF",
+  secondary: "#DA0037",
+  orange: "#FF974A",
+  yellow: "#FFC542",
+  blue: "#6AC0FF",
+  ocean: "#0062FF",
+  red: "#FC5A5A",
   background: {
-    main: "#020b0d",
-    secondary: "#0e1e25",
-    tertiary: "#021117",
+    main: "#16191C",
+    secondary: "#1F2327",
+    tertiary: "#292E33",
   },
   text: {
-    primary: "#e5e7e8",
-    secondary: "#969da1",
+    primary: "#FBFBFC",
+    secondary: "#696973",
   },
 };

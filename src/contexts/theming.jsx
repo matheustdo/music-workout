@@ -23,7 +23,7 @@ export function ThemeProvider({ children }) {
    * Load last selected theme or the prefered color scheme.
    */
   useEffect(() => {
-    const savedTheme = localStorage.getItem("@ora/lastTheme");
+    const savedTheme = localStorage.getItem("@musical-workout/lastTheme");
 
     if (savedTheme) {
       setSelectedTheme(savedTheme === "light" ? lightScheme : darkScheme);
@@ -35,13 +35,13 @@ export function ThemeProvider({ children }) {
   /**
    * Switch the theme mode between light, dark or an auto value based on css prefers-color-scheme.
    */
-  function switchTheme(themingMode) {
-    if (themingMode === "light" || themingMode === "dark") {
-      setSelectedTheme(themingMode === "light" ? lightScheme : darkScheme);
-      localStorage.setItem("@ora/lastTheme", themingMode);
+  function switchTheme() {
+    if (selectedTheme === lightScheme) {
+      setSelectedTheme(darkScheme);
+      localStorage.setItem("@musical-workout/lastTheme", "dark");
     } else {
-      setSelectedTheme(prefersDarkMode ? darkScheme : lightScheme);
-      localStorage.removeItem("@ora/lastTheme");
+      setSelectedTheme(lightScheme);
+      localStorage.setItem("@musical-workout/lastTheme", "ligth");
     }
   }
 
