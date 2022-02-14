@@ -47,7 +47,7 @@ export const darkScheme = {
     secondary: "#8B8B94",
   },
   stroke: {
-    soft: "#2A2D33",
-    hard: "#28292B",
+    soft: "#28292B",
+    hard: "#2A2D33",
   },
 };

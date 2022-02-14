@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { ThemeProvider } from "./contexts/theming";
 import Router from "./router";
+import "./i18n/config";
 
 ReactDOM.render(
   <BrowserRouter>

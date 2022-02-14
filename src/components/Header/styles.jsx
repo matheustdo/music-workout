@@ -40,6 +40,19 @@ const useStyles = createUseStyles((theme) => ({
     flexDirection: "row",
     alignItems: "center",
   },
+  themeButton: {
+    "&.MuiButtonBase-root": {
+      color: theme.text.secondary,
+
+      "&:hover": {
+        backgroundColor: `${theme.text.secondary}14`,
+
+        "&:active": {
+          backgroundColor: "transparent",
+        },
+      },
+    },
+  },
 }));
 
 export default useStyles;

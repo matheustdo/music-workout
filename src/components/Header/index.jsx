@@ -8,6 +8,7 @@ import Logo from "../../assets/images/logo.svg";
 import { lightScheme } from "../../constants/schemes";
 import ThemeContext from "../../contexts/theming";
 import useStyles from "./styles";
+import TranslationButton from "./TranslationButton";
 
 /**
  * The application's header.
@@ -31,10 +32,11 @@ function Header() {
           </Typography>
         </div>
         <div className={classes.endItems}>
+          <TranslationButton />
           <span className={classes.separator} />
           <IconButton
             onClick={() => switchTheme()}
-            style={{ color: selectedTheme.text.secondary }}
+            className={classes.themeButton}
           >
             {selectedTheme === lightScheme ? (
               <LightModeIcon />
