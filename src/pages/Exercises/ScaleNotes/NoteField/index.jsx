@@ -1,6 +1,5 @@
 import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
-import { useState } from "react";
 import { useTheme } from "react-jss";
 
 import useStyles from "./styles";
@@ -8,9 +7,8 @@ import useStyles from "./styles";
 /**
  * A note field.
  */
-function NoteField({ wrong, editable }) {
+function NoteField({ wrong, editable, value, setValue }) {
   const classes = useStyles();
-  const [value, setValue] = useState("");
   const theme = useTheme();
 
   /**
@@ -72,6 +70,8 @@ NoteField.defaultProps = {
 NoteField.propTypes = {
   wrong: PropTypes.bool,
   editable: PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
 };
 
 export default NoteField;
