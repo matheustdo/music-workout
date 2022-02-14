@@ -3,6 +3,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import Logo from "../../assets/images/logo.svg";
@@ -17,6 +18,7 @@ import TranslationButton from "./TranslationButton";
 function Header() {
   const classes = useStyles();
   const { selectedTheme, switchTheme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <header className={classes.wrapper}>
@@ -29,7 +31,7 @@ function Header() {
             draggable={false}
           />
           <Typography fontSize={24} fontWeight={500}>
-            Music Workout
+            {t("general.platformName")}
           </Typography>
         </Link>
         <div className={classes.endItems}>
