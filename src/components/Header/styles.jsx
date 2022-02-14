@@ -7,7 +7,7 @@ const useStyles = createUseStyles((theme) => ({
     position: "relative",
     display: "flex",
     justifyContent: "center",
-    padding: "0px 20px",
+    padding: `0px ${sizes.horizontalPadding}px`,
   },
   container: {
     display: "flex",
@@ -16,7 +16,6 @@ const useStyles = createUseStyles((theme) => ({
     justifyContent: "space-between",
     width: "100%",
     maxWidth: sizes.pageMaxWidth,
-    marginBottom: 20,
     padding: "20px 0px",
   },
   separator: {
