@@ -9,7 +9,11 @@
   "exercises": {
     "scaleNotes": {
       "scalesTitle": "Scales",
-      "practiceTitle": "Practice"
+      "practiceTitle": "Practice",
+      "guessThe": "Guess the",
+      "scales": {
+        "major": "major scale"
+      }
     }
   }
 }

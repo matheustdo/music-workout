@@ -14,6 +14,7 @@ import {
   pitchList,
 } from "../../../constants/definitions";
 import { getRandom } from "../../../util/functions";
+import NoteField from "./NoteField";
 import useStyles from "./styles";
 
 /**
@@ -90,22 +91,34 @@ function ScaleNotes(props) {
         </Typography>
         <div className={classes.exerciseWrapper}>
           <div className={classes.frontCard}>
-            <Typography variant="h3" display="inline" color="primary">
+            <Typography
+              style={{ marginRight: 20 }}
+              display="inline"
+              color="text.secondary"
+              className={classes.frontText}
+            >
+              {t("exercises.scaleNotes.guessThe")}
+            </Typography>
+            <Typography
+              variant="h2"
+              display="inline"
+              color="primary"
+              className={classes.frontText}
+              fontWeight={500}
+            >
               {pitchLabels[note]}
             </Typography>
             <Typography
-              style={{ marginLeft: 10 }}
-              variant="h5"
+              style={{ marginLeft: 20 }}
               display="inline"
-              color="primary"
+              color="text.secondary"
+              className={classes.frontText}
             >
-              major
+              {t("exercises.scaleNotes.scales.major")}
             </Typography>
           </div>
           <div className={classes.backCard}>
-            <Typography style={{ marginTop: 20 }}>
-              {result || `__ __ __ __ __ __ __`}
-            </Typography>
+            <NoteField />
           </div>
           <div className={classes.buttonRow}>
             <Button variant="outlined" onClick={() => handleNextButton()}>

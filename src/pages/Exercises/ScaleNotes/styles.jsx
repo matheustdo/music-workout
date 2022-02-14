@@ -35,6 +35,11 @@ const useStyles = createUseStyles((theme) => ({
     alignItems: "flex-end",
     justifyContent: "center",
   },
+  frontText: {
+    "&.MuiTypography-root": {
+      lineHeight: 0.7,
+    },
+  },
   backCard: {
     display: "flex",
     alignItems: "flex-end",
