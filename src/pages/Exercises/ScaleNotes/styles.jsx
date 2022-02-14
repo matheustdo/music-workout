@@ -42,8 +42,15 @@ const useStyles = createUseStyles((theme) => ({
   },
   backCard: {
     display: "flex",
-    alignItems: "flex-end",
     justifyContent: "center",
+
+    "& > *": {
+      marginRight: 10,
+
+      "&:last-of-type": {
+        marginRight: 0,
+      },
+    },
   },
   buttonRow: {
     display: "flex",

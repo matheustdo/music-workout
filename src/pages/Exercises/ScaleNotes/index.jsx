@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import {
   Button,
   Checkbox,
@@ -21,43 +22,84 @@ import useStyles from "./styles";
  * This pages does the major scale notes exercise.
  */
 function ScaleNotes(props) {
-  const classes = useStyles();
-  const [note, setNote] = useState(getRandom(pitchList));
-  const [result, setResult] = useState();
-  const [checkedPitches, setCheckedPitches] = useState(pitchList);
   const { t } = useTranslation();
+  const classes = useStyles();
+  const [pitch, setPitch] = useState(getRandom(pitchList));
+  const [guessing, setGuessing] = useState(true);
+  const [checkedPitches, setCheckedPitches] = useState(pitchList);
+  const [notes, setNotes] = useState(["", "", "", "", "", "", ""]);
+  const [errors, setErrors] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  /**
+   * Clean notes array.
+   */
+  function clearNotes() {
+    setNotes(["", "", "", "", "", "", ""]);
+    setErrors([false, false, false, false, false, false, false]);
+  }
+
+  /**
+   * Set the a note.
+   * @param {Note index} index
+   */
+  function handleNoteChange(newValue, index) {
+    const newNotes = notes.slice();
+    newNotes[index] = newValue;
+    setNotes(newNotes);
+  }
 
   /**
    * Handles the next button onClick event.
    */
   function handleNextButton() {
-    if (result) {
+    if (guessing) {
+      const scale = pitches[pitch].diatonic.naturalMajor;
+      const newErrors = errors.slice();
+      const newNotes = notes.slice();
+
+      scale.forEach((note, index) => {
+        if (notes[index].length > 0 && pitchLabels[note] !== notes[index]) {
+          newErrors[index] = true;
+          newNotes[index] = pitchLabels[note];
+        } else {
+          newNotes[index] = pitchLabels[note];
+        }
+      });
+
+      setNotes(newNotes);
+      setErrors(newErrors);
+      setGuessing(false);
+    } else {
       let newNote = getRandom(checkedPitches);
 
-      while (newNote === note) {
+      while (newNote === pitch) {
         newNote = getRandom(checkedPitches);
       }
 
-      setNote(newNote);
-      setResult();
-    } else {
-      const scale = pitches[note].diatonic.naturalMajor.map((pitch) => (
-        <Typography key={pitch} display="inline" style={{ marginRight: 15 }}>
-          {pitches[pitch].label}
-        </Typography>
-      ));
-      setResult(scale);
+      setPitch(newNote);
+      setGuessing(true);
+      clearNotes();
     }
   }
 
   /**
    * Handles the checkbox event.
    */
-  function handleCheckBox(newState, pitch) {
+  function handleCheckBox(newState, checkboxPitch) {
     if (newState) {
-      setCheckedPitches((oldPitches) => [...oldPitches, pitch]);
+      setCheckedPitches((oldPitches) => [...oldPitches, checkboxPitch]);
     } else {
-      setCheckedPitches((oldPitches) => oldPitches.filter((e) => e !== pitch));
+      setCheckedPitches((oldPitches) =>
+        oldPitches.filter((e) => e !== checkboxPitch)
+      );
     }
   }
 
@@ -68,16 +110,16 @@ function ScaleNotes(props) {
           {t("exercises.scaleNotes.scalesTitle")}
         </Typography>
         <FormGroup className={classes.checkItems}>
-          {pitchList.map((pitch) => (
+          {pitchList.map((note) => (
             <FormControlLabel
-              key={pitch}
+              key={note}
               control={
                 <Checkbox
                   defaultChecked
-                  onChange={(e, newState) => handleCheckBox(newState, pitch)}
+                  onChange={(e, newState) => handleCheckBox(newState, note)}
                 />
               }
-              label={pitchLabels[pitch]}
+              label={pitchLabels[note]}
               className={classes.checkItem}
               disableTypography
             />
@@ -106,7 +148,7 @@ function ScaleNotes(props) {
               className={classes.frontText}
               fontWeight={500}
             >
-              {pitchLabels[note]}
+              {pitchLabels[pitch]}
             </Typography>
             <Typography
               style={{ marginLeft: 20 }}
@@ -118,11 +160,19 @@ function ScaleNotes(props) {
             </Typography>
           </div>
           <div className={classes.backCard}>
-            <NoteField />
+            {notes.map((note, index) => (
+              <NoteField
+                key={index}
+                editable={guessing}
+                value={notes[index]}
+                onChange={(newValue) => handleNoteChange(newValue, index)}
+                wrong={errors[index]}
+              />
+            ))}
           </div>
           <div className={classes.buttonRow}>
             <Button variant="outlined" onClick={() => handleNextButton()}>
-              {result ? "Next Scale" : "Show result"}
+              {guessing ? "See Result" : "Next Scale"}
             </Button>
           </div>
         </div>

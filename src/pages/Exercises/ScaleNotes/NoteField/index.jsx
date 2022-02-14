@@ -7,7 +7,7 @@ import useStyles from "./styles";
 /**
  * A note field.
  */
-function NoteField({ wrong, editable, value, setValue }) {
+function NoteField({ wrong, editable, value, onChange, ...rest }) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -23,42 +23,44 @@ function NoteField({ wrong, editable, value, setValue }) {
 
       if (newValue.length === 1) {
         if (firstChars.includes(newUpper)) {
-          setValue(newUpper);
+          onChange(newUpper);
         }
       } else {
         const firstChar = newUpper.charAt(0);
         const lastChar = newUpper.charAt(1);
 
         if (lastChar === "#" || lastChar === "♯") {
-          setValue(`${firstChar}♯`);
+          onChange(`${firstChar}♯`);
         } else if (lastChar === "B" || lastChar === "♭") {
-          setValue(`${firstChar}♭`);
+          onChange(`${firstChar}♭`);
         }
       }
     } else {
-      setValue("");
+      onChange("");
     }
   }
 
   return (
-    <TextField
-      inputProps={{
-        min: 0,
-        style: {
-          fontSize: 24,
-          textAlign: "center",
-          fontWeight: 500,
-          color: wrong ? theme.pallete.salmon : "",
-        },
-        maxLength: 2,
-        className: classes.input,
-      }}
-      disabled={!editable}
-      variant="standard"
-      className={classes.textField}
-      value={value}
-      onChange={(e) => handleChange(e)}
-    />
+    <div {...rest}>
+      <TextField
+        inputProps={{
+          min: 0,
+          style: {
+            fontSize: 24,
+            textAlign: "center",
+            fontWeight: 500,
+            color: wrong ? theme.pallete.salmon : "",
+          },
+          maxLength: 2,
+          className: classes.input,
+        }}
+        disabled={!editable}
+        variant="standard"
+        className={classes.textField}
+        value={value}
+        onChange={(e) => handleChange(e)}
+      />
+    </div>
   );
 }
 
@@ -71,7 +73,7 @@ NoteField.propTypes = {
   wrong: PropTypes.bool,
   editable: PropTypes.bool,
   value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default NoteField;
