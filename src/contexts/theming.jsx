@@ -60,7 +60,7 @@ export function ThemeProvider({ children }) {
         },
         palette: {
           background: {
-            default: selectedTheme.background.main,
+            default: selectedTheme.background.primary,
           },
           primary: {
             main: selectedTheme.primary,

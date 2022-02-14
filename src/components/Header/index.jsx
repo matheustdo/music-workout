@@ -4,10 +4,14 @@ import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { useContext } from "react";
 
+import Logo from "../../assets/images/logo.svg";
 import { lightScheme } from "../../constants/schemes";
 import ThemeContext from "../../contexts/theming";
 import useStyles from "./styles";
 
+/**
+ * The application's header.
+ */
 function Header() {
   const classes = useStyles();
   const { selectedTheme, switchTheme } = useContext(ThemeContext);
@@ -15,11 +19,19 @@ function Header() {
   return (
     <header className={classes.wrapper}>
       <div className={classes.container}>
-        <div className={classes.topRow}>
-          <div className={classes.logo}>
-            <span className={classes.logoIcon}>🎶</span>
-            <Typography>Musical Workout</Typography>
-          </div>
+        <div className={classes.logoWrapper}>
+          <img
+            alt="logo"
+            src={Logo}
+            className={classes.logoImg}
+            draggable={false}
+          />
+          <Typography fontSize={24} fontWeight={500}>
+            Music Workout
+          </Typography>
+        </div>
+        <div className={classes.endItems}>
+          <span className={classes.separator} />
           <IconButton
             onClick={() => switchTheme()}
             style={{ color: selectedTheme.text.secondary }}
@@ -31,7 +43,6 @@ function Header() {
             )}
           </IconButton>
         </div>
-        <span className={classes.separator} />
       </div>
     </header>
   );

@@ -11,7 +11,7 @@ export const lightScheme = {
     magenta: "#D7175C",
   },
   background: {
-    main: "#F5F6FA",
+    primary: "#F5F6FA",
     secondary: "#FFFFFF",
     tertiary: "#E9EAF0",
   },
@@ -38,7 +38,7 @@ export const darkScheme = {
     magenta: "#D7175C",
   },
   background: {
-    main: "#13131A",
+    primary: "#13131A",
     secondary: "#1C1C24",
     tertiary: "#15181C",
   },

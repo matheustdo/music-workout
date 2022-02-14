@@ -8,47 +8,38 @@ const useStyles = createUseStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     padding: "0px 20px",
-
-    "&::before": {
-      content: "''",
-      width: "100%",
-      top: 0,
-      bottom: -100,
-      position: "absolute",
-      backgroundColor: theme.background.tertiary,
-      zIndex: -1,
-    },
   },
   container: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     width: "100%",
     maxWidth: sizes.pageMaxWidth,
     marginBottom: 20,
     padding: "20px 0px",
   },
-  topRow: {
+  separator: {
+    backgroundColor: theme.stroke.hard,
+    height: 24,
+    width: 1,
+    margin: "0px 5px",
+    borderRadius: "100%",
+  },
+  logoWrapper: {
+    display: "flex",
+    alignItems: "center",
+    userSelect: "none",
+  },
+  logoImg: {
+    height: 24,
+    marginRight: 8,
+    userSelect: "none",
+  },
+  endItems: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-  },
-  separator: {
-    backgroundColor: theme.background.secondary,
-    height: 1,
-    width: "100%",
-    margin: "15px 0px",
-    borderRadius: "100%",
-  },
-  logo: {
-    display: "flex",
-    alignItems: "center",
-  },
-  logoIcon: {
-    fontSize: 36,
-    marginRight: 10,
-    filter:
-      "invert(0%) sepia(0%) saturate(100%) hue-rotate(300deg) brightness(100%) contrast(130%);",
   },
 }));
 
