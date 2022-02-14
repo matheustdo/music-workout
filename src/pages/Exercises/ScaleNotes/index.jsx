@@ -48,7 +48,7 @@ function ScaleNotes(props) {
       setResult(scale);
     }
   }
-  console.log(result);
+
   /**
    * Handles the checkbox event.
    */
@@ -84,27 +84,35 @@ function ScaleNotes(props) {
         </FormGroup>
       </div>
       <div className={classes.separator} />
-      <div className={classes.section}>
+      <div className={classes.section} style={{ height: "100%" }}>
         <Typography color="text.secondary" style={{ marginBottom: 20 }}>
           {t("exercises.scaleNotes.practiceTitle")}
         </Typography>
-        <Typography variant="h3" display="inline" color="primary">
-          {pitchLabels[note]}
-        </Typography>
-        <Typography
-          style={{ marginLeft: 10 }}
-          variant="h5"
-          display="inline"
-          color="primary"
-        >
-          major
-        </Typography>
-        <Typography style={{ marginTop: 20 }}>
-          {result || `__ __ __ __ __ __ __`}
-        </Typography>
-        <Button variant="outlined" onClick={() => handleNextButton()}>
-          {result ? "Next Scale" : "Show result"}
-        </Button>
+        <div className={classes.exerciseWrapper}>
+          <div className={classes.frontCard}>
+            <Typography variant="h3" display="inline" color="primary">
+              {pitchLabels[note]}
+            </Typography>
+            <Typography
+              style={{ marginLeft: 10 }}
+              variant="h5"
+              display="inline"
+              color="primary"
+            >
+              major
+            </Typography>
+          </div>
+          <div className={classes.backCard}>
+            <Typography style={{ marginTop: 20 }}>
+              {result || `__ __ __ __ __ __ __`}
+            </Typography>
+          </div>
+          <div className={classes.buttonRow}>
+            <Button variant="outlined" onClick={() => handleNextButton()}>
+              {result ? "Next Scale" : "Show result"}
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -6,11 +6,12 @@ import useStyles from "./styles";
  * The application's home page.
  */
 function Home() {
+  // eslint-disable-next-line no-unused-vars
   const classes = useStyles();
 
   return (
     <Page>
-      <ScaleNotes className={classes.scaleNotes} />
+      <ScaleNotes />
     </Page>
   );
 }
