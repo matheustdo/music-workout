@@ -30,7 +30,7 @@ function Header() {
             className={classes.logoImg}
             draggable={false}
           />
-          <Typography fontSize={24} fontWeight={500}>
+          <Typography className={classes.logoName}>
             {t("general.platformName")}
           </Typography>
         </Link>

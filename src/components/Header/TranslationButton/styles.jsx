@@ -19,6 +19,11 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
   },
+  label: {
+    "@media (max-width: 430px)": {
+      display: "none",
+    },
+  },
 }));
 
 export default useStyles;

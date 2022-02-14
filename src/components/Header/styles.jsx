@@ -37,6 +37,20 @@ const useStyles = createUseStyles((theme) => ({
     marginRight: 8,
     userSelect: "none",
   },
+  logoName: {
+    "&.MuiTypography-root": {
+      fontSize: 24,
+      fontWeight: 500,
+      verticalAlign: "middle",
+
+      "@media (max-width: 500px)": {
+        fontSize: 20,
+      },
+      "@media (max-width: 340px)": {
+        display: "none",
+      },
+    },
+  },
   endItems: {
     display: "flex",
     flexDirection: "row",

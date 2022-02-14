@@ -1,6 +1,12 @@
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import TranslateRoundedIcon from "@mui/icons-material/TranslateRounded";
-import { Button, Typography, Menu, MenuItem } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Menu,
+  MenuItem,
+  useMediaQuery,
+} from "@mui/material";
 import i18next from "i18next";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -20,6 +26,7 @@ function TranslationButton() {
   const [buttonWidth, setButtonWidth] = useState(100);
   const availableLanguages = i18next.options.resources;
   const open = Boolean(anchorEl);
+  const isSmall = useMediaQuery("@media (max-width: 430px)");
 
   /**
    * Handles the button click.
@@ -49,7 +56,11 @@ function TranslationButton() {
    */
   useEffect(() => {
     const button = buttonRef.current;
-    setButtonWidth(button.offsetWidth);
+    if (button.offsetWidth < 120) {
+      setButtonWidth(120);
+    } else {
+      setButtonWidth(button.offsetWidth);
+    }
   }, [buttonRef?.current?.offsetWidth]);
 
   return (
@@ -60,9 +71,15 @@ function TranslationButton() {
         className={classes.button}
         onClick={handleClick}
       >
-        <TranslateRoundedIcon style={{ marginRight: 8, fontSize: 20 }} />
-        <Typography variant="body">{t("general.language")}</Typography>
-        <KeyboardArrowDownRoundedIcon style={{ marginLeft: 5, fontSize: 20 }} />
+        <TranslateRoundedIcon
+          style={{ marginRight: isSmall ? 0 : 8, fontSize: 24 }}
+        />
+        <Typography variant="body" className={classes.label}>
+          {t("general.language")}
+        </Typography>
+        <KeyboardArrowDownRoundedIcon
+          style={{ marginLeft: isSmall ? 0 : 5, fontSize: 20 }}
+        />
       </Button>
       <Menu
         id="translate-menu"
