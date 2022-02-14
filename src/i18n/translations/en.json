@@ -2,5 +2,14 @@
   "general": {
     "language": "English",
     "platformName": "Music Workout"
+  },
+  "footer": {
+    "credits": "Developed by Matheus Teles"
+  },
+  "exercises": {
+    "scaleNotes": {
+      "scalesTitle": "Scales",
+      "practiceTitle": "Practice"
+    }
   }
 }

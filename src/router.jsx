@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import ScalesTrainer from "./pages/ScalesTrainer";
+import Home from "./pages/Home";
 
 /**
  *
@@ -11,7 +11,7 @@ function Router() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<ScalesTrainer />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   );

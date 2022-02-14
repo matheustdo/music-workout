@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import TranslateRoundedIcon from "@mui/icons-material/TranslateRounded";
 import { Button, Typography, Menu, MenuItem } from "@mui/material";
@@ -21,6 +20,7 @@ function TranslationButton() {
   const [buttonWidth, setButtonWidth] = useState(100);
   const availableLanguages = i18next.options.resources;
   const open = Boolean(anchorEl);
+
   /**
    * Handles the button click.
    */

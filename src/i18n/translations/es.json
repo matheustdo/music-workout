@@ -2,5 +2,8 @@
   "general": {
     "language": "Español",
     "platformName": "Music Workout"
+  },
+  "footer": {
+    "credits": "Desarrollado por Matheus Teles"
   }
 }
