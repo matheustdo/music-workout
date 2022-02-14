@@ -3,6 +3,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import Logo from "../../assets/images/logo.svg";
 import { lightScheme } from "../../constants/schemes";
@@ -20,7 +21,7 @@ function Header() {
   return (
     <header className={classes.wrapper}>
       <div className={classes.container}>
-        <div className={classes.logoWrapper}>
+        <Link to="/" className={classes.logoWrapper}>
           <img
             alt="logo"
             src={Logo}
@@ -30,7 +31,7 @@ function Header() {
           <Typography fontSize={24} fontWeight={500}>
             Music Workout
           </Typography>
-        </div>
+        </Link>
         <div className={classes.endItems}>
           <TranslationButton />
           <span className={classes.separator} />

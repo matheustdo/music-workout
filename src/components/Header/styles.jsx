@@ -29,6 +29,8 @@ const useStyles = createUseStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     userSelect: "none",
+    color: "inherit",
+    textDecoration: "inherit",
   },
   logoImg: {
     height: 24,
