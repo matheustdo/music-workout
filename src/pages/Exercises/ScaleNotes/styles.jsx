@@ -34,28 +34,48 @@ const useStyles = createUseStyles((theme) => ({
     display: "flex",
     alignItems: "flex-end",
     justifyContent: "center",
+
+    "@media (max-width: 380px)": {
+      alignItems: "center",
+      flexDirection: "column",
+    },
   },
   frontText: {
     "&.MuiTypography-root": {
       lineHeight: 0.7,
+      marginRight: 20,
+
+      "&:last-of-type": {
+        marginRight: 0,
+        marginLeft: 20,
+      },
+      "@media (max-width: 380px)": {
+        marginRight: 0,
+        marginBottom: 20,
+
+        "&:last-of-type": {
+          marginTop: 20,
+          marginLeft: 0,
+        },
+      },
     },
   },
   backCard: {
     display: "flex",
+    alignItems: "center",
     justifyContent: "center",
+    flexWrap: "wrap",
+    columnGap: 10,
 
-    "& > *": {
-      marginRight: 10,
-
-      "&:last-of-type": {
-        marginRight: 0,
-      },
+    "@media (max-width: 380px)": {
+      marginBottom: 30,
     },
   },
   buttonRow: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
+    float: "left",
   },
 }));
 

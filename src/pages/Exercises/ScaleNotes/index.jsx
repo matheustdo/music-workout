@@ -134,7 +134,6 @@ function ScaleNotes(props) {
         <div className={classes.exerciseWrapper}>
           <div className={classes.frontCard}>
             <Typography
-              style={{ marginRight: 20 }}
               display="inline"
               color="text.secondary"
               className={classes.frontText}
@@ -147,11 +146,11 @@ function ScaleNotes(props) {
               color="primary"
               className={classes.frontText}
               fontWeight={500}
+              style={{ margin: 0 }}
             >
               {pitchLabels[pitch]}
             </Typography>
             <Typography
-              style={{ marginLeft: 20 }}
               display="inline"
               color="text.secondary"
               className={classes.frontText}
@@ -167,6 +166,7 @@ function ScaleNotes(props) {
                 value={notes[index]}
                 onChange={(newValue) => handleNoteChange(newValue, index)}
                 wrong={errors[index]}
+                style={{ display: "inline-block" }}
               />
             ))}
           </div>
