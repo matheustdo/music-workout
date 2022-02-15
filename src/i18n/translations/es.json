@@ -5,5 +5,19 @@
   },
   "footer": {
     "credits": "Desarrollado por Matheus Teles"
+  },
+  "exercises": {
+    "scaleNotes": {
+      "scalesTitle": "Escalas",
+      "practiceTitle": "Práctica",
+      "guessThe": "Adivina la escala de ",
+      "scales": {
+        "major": "mayor"
+      },
+      "nextButton": {
+        "seeResult": "Ver resultado",
+        "nextScale": "Próxima escala"
+      }
+    }
   }
 }
