@@ -54,6 +54,7 @@ function ScaleNotes(props) {
   function handleNoteChange(newValue, index) {
     const newNotes = notes.slice();
     newNotes[index] = newValue;
+
     if (newValue.length === 2) {
       const nextNoteField = document.getElementById(`NoteField-${index + 1}`);
 
@@ -88,11 +89,15 @@ function ScaleNotes(props) {
     } else {
       let newNote = getRandom(checkedPitches);
 
-      while (newNote === pitch) {
-        newNote = getRandom(checkedPitches);
+      if (checkedPitches.length > 1) {
+        while (newNote === pitch) {
+          newNote = getRandom(checkedPitches);
+        }
       }
 
-      setPitch(newNote);
+      if (checkedPitches.length > 0) {
+        setPitch(newNote);
+      }
       setGuessing(true);
       clearNotes();
     }
