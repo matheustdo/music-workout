@@ -2,7 +2,7 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles((theme) => ({
   textField: {
-    width: 30,
+    width: 40,
     borderRadius: "100%",
 
     "& .MuiInput-root": {

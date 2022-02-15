@@ -6,7 +6,7 @@ import {
   FormGroup,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -37,6 +37,7 @@ function ScaleNotes(props) {
     false,
     false,
   ]);
+  const nextButtonRef = useRef();
 
   /**
    * Clean notes array.
@@ -53,6 +54,13 @@ function ScaleNotes(props) {
   function handleNoteChange(newValue, index) {
     const newNotes = notes.slice();
     newNotes[index] = newValue;
+    if (newValue.length === 2) {
+      const nextNoteField = document.getElementById(`NoteField-${index + 1}`);
+
+      if (nextNoteField) {
+        nextNoteField.focus();
+      }
+    }
     setNotes(newNotes);
   }
 
@@ -100,6 +108,45 @@ function ScaleNotes(props) {
       setCheckedPitches((oldPitches) =>
         oldPitches.filter((e) => e !== checkboxPitch)
       );
+    }
+  }
+
+  /**
+   * Handle the textfield key down.
+   * @param {*} event
+   */
+  function handleNotefieldKeyDown(event, index) {
+    if (event.key.toLowerCase() === "enter" && notes[index].length === 0) {
+      event.preventDefault();
+      handleNextButton();
+      nextButtonRef.current.focus();
+    } else if (
+      event.key.toLowerCase() === "enter" ||
+      event.key.toLowerCase() === "arrowright"
+    ) {
+      event.preventDefault();
+      const nextNoteField = document.getElementById(`NoteField-${index + 1}`);
+
+      if (nextNoteField) {
+        nextNoteField.focus();
+        const size = nextNoteField.value.length;
+        nextNoteField.setSelectionRange(size, size);
+      } else {
+        handleNextButton();
+        nextButtonRef.current.focus();
+      }
+    } else if (
+      (event.key.toLowerCase() === "backspace" && notes[index].length === 0) ||
+      event.key.toLowerCase() === "arrowleft"
+    ) {
+      event.preventDefault();
+      const nextNoteField = document.getElementById(`NoteField-${index - 1}`);
+
+      if (nextNoteField) {
+        nextNoteField.focus();
+        const size = nextNoteField.value.length;
+        nextNoteField.setSelectionRange(size, size);
+      }
     }
   }
 
@@ -161,18 +208,26 @@ function ScaleNotes(props) {
           <div className={classes.backCard}>
             {notes.map((note, index) => (
               <NoteField
-                key={index}
+                key={`NoteField-${index}`}
+                id={`NoteField-${index}`}
                 editable={guessing}
                 value={notes[index]}
                 onChange={(newValue) => handleNoteChange(newValue, index)}
                 wrong={errors[index]}
                 style={{ display: "inline-block" }}
+                onKeyDown={(e) => handleNotefieldKeyDown(e, index)}
               />
             ))}
           </div>
           <div className={classes.buttonRow}>
-            <Button variant="outlined" onClick={() => handleNextButton()}>
-              {guessing ? "See Result" : "Next Scale"}
+            <Button
+              ref={nextButtonRef}
+              variant="outlined"
+              onClick={() => handleNextButton()}
+            >
+              {guessing
+                ? t("exercises.scaleNotes.nextButton.seeResult")
+                : t("exercises.scaleNotes.nextButton.nextScale")}
             </Button>
           </div>
         </div>

@@ -13,6 +13,10 @@
       "guessThe": "Guess the",
       "scales": {
         "major": "major scale"
+      },
+      "nextButton": {
+        "seeResult": "See Result",
+        "nextScale": "Next Scale"
       }
     }
   }

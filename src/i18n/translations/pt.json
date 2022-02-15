@@ -13,6 +13,10 @@
       "guessThe": "Adivinhe a escala de",
       "scales": {
         "major": "maior"
+      },
+      "nextButton": {
+        "seeResult": "Ver resultado",
+        "nextScale": "Próxima escala"
       }
     }
   }

@@ -7,7 +7,15 @@ import useStyles from "./styles";
 /**
  * A note field.
  */
-function NoteField({ wrong, editable, value, onChange, ...rest }) {
+function NoteField({
+  wrong,
+  editable,
+  value,
+  onChange,
+  id,
+  onKeyDown,
+  ...rest
+}) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -40,9 +48,30 @@ function NoteField({ wrong, editable, value, onChange, ...rest }) {
     }
   }
 
+  /**
+   * Handle notefield click.
+   */
+  function handleClick(event) {
+    event.preventDefault();
+    const input = event.target;
+    const size = input.value.length;
+    input.setSelectionRange(size, size);
+  }
+
+  /**
+   * Handle notefield focus.
+   */
+  function handleFocus(event) {
+    event.preventDefault();
+    const input = event.target;
+    const size = input.value.length;
+    input.setSelectionRange(size, size);
+  }
+
   return (
     <div {...rest}>
       <TextField
+        id={id}
         inputProps={{
           min: 0,
           style: {
@@ -59,6 +88,9 @@ function NoteField({ wrong, editable, value, onChange, ...rest }) {
         className={classes.textField}
         value={value}
         onChange={(e) => handleChange(e)}
+        onKeyDown={(e) => onKeyDown(e)}
+        onClick={(e) => handleClick(e)}
+        onFocus={(e) => handleFocus(e)}
       />
     </div>
   );
@@ -67,6 +99,8 @@ function NoteField({ wrong, editable, value, onChange, ...rest }) {
 NoteField.defaultProps = {
   wrong: false,
   editable: true,
+  id: undefined,
+  onKeyDown: () => {},
 };
 
 NoteField.propTypes = {
@@ -74,6 +108,8 @@ NoteField.propTypes = {
   editable: PropTypes.bool,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default NoteField;
