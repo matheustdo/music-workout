@@ -35,7 +35,7 @@ const useStyles = createUseStyles((theme) => ({
     alignItems: "flex-end",
     justifyContent: "center",
 
-    "@media (max-width: 380px)": {
+    "@media (max-width: 440px)": {
       alignItems: "center",
       flexDirection: "column",
     },
@@ -49,7 +49,7 @@ const useStyles = createUseStyles((theme) => ({
         marginRight: 0,
         marginLeft: 20,
       },
-      "@media (max-width: 380px)": {
+      "@media (max-width: 440px)": {
         marginRight: 0,
         marginBottom: 20,
 
@@ -67,7 +67,7 @@ const useStyles = createUseStyles((theme) => ({
     flexWrap: "wrap",
     columnGap: 10,
 
-    "@media (max-width: 380px)": {
+    "@media (max-width: 440px)": {
       marginBottom: 30,
     },
   },
