@@ -22,6 +22,7 @@ const useStyles = createUseStyles((theme) => ({
     maxWidth: sizes.pageMaxWidth,
     width: "100%",
     color: theme.text.secondary,
+    textDecoration: "none",
   },
 }));
 

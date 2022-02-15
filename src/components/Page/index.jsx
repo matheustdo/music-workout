@@ -14,9 +14,14 @@ function Page({ children }) {
   return (
     <div className={classes.wrapper}>
       <div className={classes.container}>{children}</div>
-      <Typography className={classes.footer} align="right">
-        {t("footer.credits")}
-      </Typography>
+      <a
+        className={classes.footer}
+        href="https://github.com/matheustdo"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Typography align="right">{t("footer.credits")}</Typography>
+      </a>
     </div>
   );
 }
