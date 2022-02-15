@@ -23,6 +23,7 @@ const useStyles = createUseStyles((theme) => ({
     width: "100%",
     color: theme.text.secondary,
     textDecoration: "none",
+    marginBottom: 20,
   },
 }));
 
